@@ -4,6 +4,7 @@
 // ==============================================================================
 
 var express = require("express");
+const handlebars = require("express-handlebars");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -19,6 +20,9 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Set up for the handlebars
+app.engine("handlebars", handlebars({defaultLayout: "main"}))
+app.set ("view engine", "handlebars");
 
 // ================================================================================
 // ROUTER
